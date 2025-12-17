@@ -132,6 +132,8 @@
   <Sequence DisplayName="ProcessedTransactionReport" sap:VirtualizedContainerService.HintSize="1276,4181" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strReportFile" />
+      <Variable x:TypeArguments="x:String" Name="strMailBody" />
+      <Variable x:TypeArguments="x:String" Name="strMailTemplate" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -200,10 +202,6 @@
       </If>
     </Sequence>
     <Sequence DisplayName="Report Creation and Mail Sending" sap:VirtualizedContainerService.HintSize="604,2413" sap2010:WorkflowViewState.IdRef="Sequence_5">
-      <Sequence.Variables>
-        <Variable x:TypeArguments="x:String" Name="strMailTemplate" />
-        <Variable x:TypeArguments="x:String" Name="strMailBody" />
-      </Sequence.Variables>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>

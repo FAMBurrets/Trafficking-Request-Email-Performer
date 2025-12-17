@@ -12,6 +12,7 @@
       "Path": "Main.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
+        "dtReport&StateMachine_1",
         "TransactionItem&StateMachine_1",
         "SystemException&StateMachine_1",
         "BusinessException&StateMachine_1",
@@ -35,8 +36,17 @@
     {
       "Path": "Framework/Trafficking Request/GetCostcoForm.xaml",
       "SortBy": 0,
-      "VariablesSectionElementsOrder": [],
+      "VariablesSectionElementsOrder": [
+        "strNewFilename&Sequence_2",
+        "downloadedCostcoPDF&Sequence_2"
+      ],
       "ArgumentsSectionElementsOrder": [
+        "in_CostcoArchivePath",
+        "in_NewFilename",
+        "in_DCEmail",
+        "in_PONumber",
+        "out_downloadedCostcoFile",
+        "io_dtReport",
         "in_costcoFile"
       ],
       "ConstantsSectionElementsOrder": [],
@@ -45,10 +55,85 @@
     {
       "Path": "Framework/Process.xaml",
       "SortBy": 0,
-      "VariablesSectionElementsOrder": [],
+      "VariablesSectionElementsOrder": [
+        "downloadedCostcoFile&Sequence_1"
+      ],
       "ArgumentsSectionElementsOrder": [
+        "io_dtReport",
         "in_TransactionItem",
         "in_Config"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Framework/Trafficking Request/SendEmailToDC.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "strMailSubject&Sequence_1",
+        "strMailSubject&Sequence_2",
+        "strMailTemplate&Sequence_1",
+        "strMailBody&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_PONumber",
+        "in_strMailSubject",
+        "in_strMailRecipient",
+        "in_fileToAttach"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Framework/Reporting/ProcessedTransactionReport.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "strMailTemplate&Sequence_1",
+        "strMailBody&Sequence_1",
+        "strReportFile&Sequence_1",
+        "strDate&Sequence_2",
+        "boolReportPathExist&Sequence_2"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_dtReport",
+        "in_strMailRecipient",
+        "in_strMailSubject",
+        "in_strReportPath"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Framework/InitAllApplications.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "dtReport&Sequence_9"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "out_dtReport",
+        "in_Config"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Framework/SetTransactionStatus.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "QueueRetry&Sequence_17",
+        "ScreenshotPath&Sequence_17"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_BusinessException",
+        "in_TransactionField1",
+        "in_TransactionField2",
+        "in_TransactionID",
+        "in_SystemException",
+        "in_Config",
+        "in_TransactionItem",
+        "io_RetryNumber",
+        "io_TransactionNumber",
+        "io_ConsecutiveSystemExceptions"
       ],
       "ConstantsSectionElementsOrder": [],
       "AddedNamespaces": null

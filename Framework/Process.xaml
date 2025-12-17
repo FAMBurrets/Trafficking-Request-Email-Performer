@@ -44,6 +44,7 @@
       <x:String>System.Xml.Serialization</x:String>
       <x:String>UiPath.MicrosoftOffice365.Files.Models</x:String>
       <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>UiPath.MicrosoftOffice365</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -105,6 +106,7 @@
       <AssemblyReference>UiPath.MicrosoftOffice365</AssemblyReference>
       <AssemblyReference>UiPath.Platform</AssemblyReference>
       <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>UiPath.MicrosoftOffice365.Activities</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="1276,919" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -125,13 +127,16 @@
         <OutArgument x:TypeArguments="x:String" x:Key="out_downloadedCostcoFile">[downloadedCostcoFile]</OutArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_PONumber">[in_TransactionItem.SpecificContent("PONumber").ToString]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_DCEmail">[in_TransactionItem.SpecificContent("ShipToEmail").ToString]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_NewFilename">[in_TransactionItem.SpecificContent("Document_FileName").ToString]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_CostcoArchivePath">[in_Config("TCDR_CotscoFormOutputPath").ToString]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="SendEmailToDC - Invoke Workflow File (Framework\Trafficking Request\SendEmailToDC.xaml)" sap:VirtualizedContainerService.HintSize="416,177" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Framework\Trafficking Request\SendEmailToDC.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="x:String" x:Key="in_fileToAttach">[downloadedCostcoFile]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_strMailRecipient">[in_TransactionItem.SpecificContent("ShipToEmail").ToString]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_strMailSubject">[in_TransactionItem.SpecificContent("PONumber").ToString]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_strMailSubject">[in_Config("TCDR_RequestMailSubject").ToString]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_PONumber">[in_TransactionItem.SpecificContent("PONumber").ToString]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{in_TransactionItem.SpecificContent(&quot;PONumber&quot;).ToString, in_TransactionItem.SpecificContent(&quot;ShipToEmail&quot;).ToString, &quot;Success&quot;,&quot;&quot;}]" DataTable="[io_dtReport]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="416,218" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
